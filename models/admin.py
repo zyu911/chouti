@@ -13,7 +13,7 @@ class IAdminRepository(object):
         pass
 
     def show_or_hidden(self, nid):
-        pass
+        raise Exception('你不能执行该方法')
 
 
 class AdminService:
