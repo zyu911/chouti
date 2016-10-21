@@ -1,0 +1,258 @@
+{% extends '../Layout/_layout.html' %}
+
+{% block crumbs %}
+地区管理 / 省份管理
+{% end %}
+
+{% block content %}
+<style>
+    .error-message{
+			margin: 4px 0 0 0;
+			padding: 0;
+			color: red;
+		}
+</style>
+
+<div>
+    <table id="dg"></table>
+
+    <div id="dlg" class="easyui-dialog" style="width:400px;height:200px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
+        <form id="fm1">
+            <div class="input-group clearfix">
+                <div class="group-label" style="width: 80px;">
+                    <span>省份：</span>
+                </div>
+                <div class="group-input" style="width: 300px;">
+                    <input id="dlg_nid" style="width: 200px;display: none"  name="nid"/>
+                    <input id="dlg_province" style="width: 200px" class="easyui-textbox" type="text" name="caption" data-options="required:true,missingMessage:'省份不能为空'" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="dlg-buttons">
+        <span id="dlg_summary" style="color: red"></span>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="Save()">保存</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">取消</a>
+    </div>
+</div>
+    <script>
+
+        $(function () {
+            // 加载表格数据
+            InitTable();
+            InitPagination();
+            InitMenu();
+
+        });
+
+        /*
+        初始化左侧菜单
+        */
+        function InitMenu(){
+            $('#aa').accordion('select',0);
+            $('#jd_menu_province').addClass('active');
+        }
+        /*
+        初始化表格内容
+         */
+        function InitTable(){
+            $('#dg').datagrid({
+                title: '省份列表',
+                iconCls: 'icon-save',
+                url: '/province.html',
+                method: 'get',
+                //fitColumns: true,
+                idField: 'nid',
+                singleSelect: true,
+                rownumbers: true,
+                striped: true,
+                columns:[[
+                    {
+                        field:'ck',
+                        checkbox:true
+                    },
+                    {
+                        field:'nid',
+                        title:'ID',
+                        width:80,
+                        align:'center'
+                    },
+					{
+                        field:'caption',
+                        title:'标题',
+                        width:180,
+                        align:'center'}
+				]],
+                toolbar: [
+                    {
+                        text: '添加',
+                        iconCls: 'icon-add',
+                        handler: AddRow
+                    },{
+                        text:'删除',
+                        iconCls:'icon-remove',
+                        handler: RemoveRow
+                    },{
+                        text:'修改',
+                        iconCls:'icon-edit',
+                        handler: EditRow
+                    }
+                ],
+                pagePosition: 'both',
+                pagination:true,
+                pageSize:10,
+                pageNumber: 1,
+                pageList: [10,20,50],
+                loadFilter: function(data){
+                    return data;
+
+                    }
+                });
+        }
+
+        /*
+        初始化分页
+         */
+        function InitPagination(){
+            var pager = $('#dg').datagrid('getPager');
+            $(pager).pagination({
+                beforePageText: '第',
+                afterPageText: '页 共{pages}页',
+                displayMsg: '当前显示{from}-{to}条记录 共{total}条数据'
+
+            })
+        }
+
+        var METHOD;
+
+        /*
+        添加
+        */
+        function AddRow(){
+            // 显示对话框，由于希望添加则将方法设置为POST
+            $('#fm').form('clear');
+            $('#dlg').dialog('open').dialog('setTitle','创建省份');
+            $('#dlg_summary').empty();
+            METHOD = 'post';
+        }
+
+        /*
+        修改
+        */
+        function EditRow(){
+            // 显示对话框，由于希望修改则将方法设置为PUT
+
+            // 获取选中的值，将其赋值到页面上，然后ajax提交
+            var row = $('#dg').datagrid('getSelected');
+            $('#dlg_summary').empty();
+            if(row){
+                METHOD = 'put';
+                $('#fm1').form('clear');
+                $('#fm1').form('load',row);
+                $('#dlg').dialog('open').dialog('setTitle','修改省份');
+
+            }else{
+                $.messager.alert('警告', '请选择要修改的行', 'warning');
+            }
+
+        }
+
+        /*
+        删除
+        */
+        function RemoveRow(){
+            // 获取已经选中的行
+            var rows = $('#dg').datagrid('getSelections');
+            console.log(rows);
+            if(rows.length<=0){
+                // 警告框
+                $.messager.alert('警告', '请选择要删除的行', 'warning');
+            }else if(rows.length>1){
+                $.messager.alert('警告', '不支持批量删除');
+            }else{
+                // 确认框
+                $.messager.confirm('确定', '您确定要删除吗？', function (status) {
+                    if(status){
+                        // 点击确定
+                        // 获取当前选中行的值，Ajax发送到后台
+                        var row = rows[0];
+                        $.ajax({
+                            url: 'province.html',
+                            type: 'delete',
+                            data: {nid: row.nid},
+                            dataType: 'json',
+                            success: function (data) {
+                                if(data.status){
+                                    //删除成功
+                                    $.messager.show({
+                                        msg:'删除成功',
+                                        showType:'slide',
+                                        showSpeed: 500,
+                                        timeout: 5,
+                                        style:{
+                                            right:'',
+                                            top:document.body.scrollTop+document.documentElement.scrollTop,
+                                            bottom:''
+                                        }
+                                    });
+                                    // 重新加载表格
+                                    var rowIndex = $('#dg').datagrid('getRowIndex', row);
+                                    $('#dg').datagrid('deleteRow',rowIndex);
+                                    $('#dg').datagrid('reload');
+
+                                    // 删除指定行
+                                    //var rowIndex = dt.datagrid('getRowIndex', row);
+                                    //dt.datagrid('deleteRow',rowIndex);
+
+                                }else{
+                                    //删除失败
+                                    // $.messager.alert('错误信息', data.summary ,'error');
+                                    $.messager.show({
+                                        icon: 'error',
+                                        title:'错误信息',
+                                        msg:data.summary,
+                                        showType:'slide',
+                                        timeout: 0,
+                                        style:{
+                                            right:'',
+                                            top:document.body.scrollTop+document.documentElement.scrollTop,
+                                            bottom:''
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+                })
+            }
+        }
+
+        /*
+        保存按钮
+         */
+        function Save(){
+            var isValid = $('#fm1').form('validate');
+            if(isValid){
+                $.ajax({
+                    url: '/province.html',
+                    type: METHOD,
+                    data: {caption: $('#dlg_province').val(),nid:  $('#dlg_nid').val()},
+                    dataType: 'json',
+                    success: function(data){
+                        if(data.status){
+                            $('#fm1').form('clear');
+                            $('#dlg').dialog('close');
+                            $('#dg').datagrid('reload');
+                        }else{
+                            $('#dlg_summary').text(data.summary);
+                        }
+                    }
+                })
+            }else{
+                // 前端验证通过
+            }
+            // $('#fm').form('clear');
+        }
+	</script>
+
+{% end %}

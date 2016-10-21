@@ -1,0 +1,142 @@
+{% extends '../Layout/_layout.html' %}
+
+{% block crumbs %}
+用户管理 / 商户管理
+{% end %}
+
+{% block content %}
+<style>
+    .error-message{
+			margin: 4px 0 0 0;
+			padding: 0;
+			color: red;
+		}
+</style>
+
+<div>
+    <table id="dg"></table>
+
+</div>
+    <script>
+
+        $(function () {
+            // 加载表格数据
+            InitMenu();
+            InitTable();
+            InitPagination();
+
+
+        });
+
+        /*
+        初始化左侧菜单
+        */
+        function InitMenu(){
+            $('#aa').accordion('select',1);
+            $('#jd_menu_merchant').addClass('active');
+        }
+        /*
+        初始化表格内容
+         */
+        function InitTable(){
+            $('#dg').datagrid({
+                title: '商户列表',
+                url: '/Merchant.html',
+                method: 'get',
+                queryParams: {
+                    'type': 'pagination'
+                },
+                //fitColumns: true,
+                idField: 'nid',
+                singleSelect: true,
+                rownumbers: true,
+                striped: true,
+                columns:[[
+                    {
+                        field:'ck',
+                        checkbox:true
+                    },
+                    {
+                        field:'nid',
+                        title:'ID',
+                        align:'center'
+                    },
+					{
+                        field:'name',
+                        title:'商户名称',
+                        align:'center',
+                        width: 180
+                    },
+					{
+                        field:'domain',
+                        title:'域名',
+                        align:'center',
+                        width: 180
+                    },
+					{
+                        field:' product',
+                        title:'商品',
+                        align:'center',
+                        width: 180,
+                        formatter: function(val,row,index){
+                            var tagProduct = "<a href='MerchantDetail.html?nid=" + row.nid +"'>商品列表</a>";
+                            var tagDetail = "<a href='MerchantDetail.html?nid=" + row.nid +"'>查看详细</a>";
+                            return tagProduct+"|" + tagDetail;
+                        }
+
+                    },
+					{
+                        field:' detail',
+                        title:'选项',
+                        align:'center',
+                        width: 180,
+                        formatter: function(val,row,index){
+                            var tagEdit = "<a href='MerchantEdit.html?nid=" + row.nid +"'>修改</a>";
+                            var tagDelete = "<a href='MerchantEdit.html?nid=" + row.nid +"&_method=DELETE'>删除</a>";
+                            return tagEdit+"|"+tagDelete;
+                        }
+                    }
+				]],
+                toolbar: [
+                    {
+                        text: '添加',
+                        iconCls: 'icon-add',
+                        handler: function(){
+                            location.href = 'MerchantEdit.html';
+                        }
+                    }
+                ],
+                pagePosition: 'both',
+                pagination:true,
+                pageSize:10,
+                pageNumber: 1,
+                pageList: [10,20,50],
+                onClickRow: function (rowIndex, rowData) {
+                    $(this).datagrid('unselectRow', rowIndex);
+                },
+                loadFilter: function(data){
+                        if(data.status){
+                            return data;
+                        }else{
+                            $.messager.alert('错误提示',data.message,'error')
+                        }
+                    }
+                });
+        }
+
+        /*
+        初始化分页
+         */
+        function InitPagination(){
+            var pager = $('#dg').datagrid('getPager');
+            $(pager).pagination({
+                beforePageText: '第',
+                afterPageText: '页 共{pages}页',
+                displayMsg: '当前显示{from}-{to}条记录 共{total}条数据'
+
+            })
+        }
+
+	</script>
+
+{% end %}

@@ -1,0 +1,296 @@
+{% extends '../Layout/_layout.html' %}
+
+{% block crumbs %}
+用户管理 / 商户管理 / {{crumbs}}
+{% end %}
+
+{% block content %}
+<style>
+    .merchant-group{
+        width: 50%;
+        float: left;
+        line-height: 30px;
+    }
+    .merchant-group .label{
+        float: left;
+        padding: 10px;
+        min-width: 120px;
+        text-align: right;
+
+
+    }
+    .merchant-group .input{
+        float: left;
+        padding: 10px;
+        min-width: 240px;
+        position: relative;
+    }
+    .merchant-group .input input[type='text'],select{
+        min-width: 200px;
+        min-height: 20px;
+    }
+    .merchant-group .input .address{
+        width: 500px;
+        height: 100px;
+    }
+
+    .merchant-group .input span{
+        position: absolute;
+        top: 30px;
+        left: 10px;
+        color: red;
+    }
+    .merchant-group .input span.address-error{
+        top: 110px;
+    }
+    .summary-error{
+        max-width: 350px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 10px;
+        background-color: indianred;
+        color: #ffffff;
+    }
+    .hide{
+        display: none;
+    }
+</style>
+{% if summary %}
+    <div class="summary-error">{{summary}}</div>
+{% end %}
+<div class="clearfix">
+     {% if nid %}
+        <form method="POST" action="/MerchantEdit.html?nid={{nid}}">
+     {% else %}
+        <form method="POST" action="/MerchantEdit.html">
+     {% end %}
+        {% if method == 'PUT' %}
+        <input type="hidden" name="_method" value="PUT">
+        {% end %}
+
+       {% raw form.nid %}
+
+        <div class="merchant-group clearfix">
+            <label class="label">商店名称：</label>
+            <div class="input">
+                {% raw form.name %}
+                {% if form._error_dict.get('name',None) %}
+                    <span>{{form._error_dict.get('name')}}</span>
+                {% end %}
+            </div>
+        </div>
+
+        <div class="merchant-group clearfix">
+            <label class="label">域名：</label>
+            <div class="input">
+                {% raw form.domain %}
+                {% if form._error_dict.get('domain',None) %}
+                    <span>{{form._error_dict.get('domain')}}</span>
+                {% end %}
+            </div>
+        </div>
+
+        <div class="merchant-group clearfix">
+            <label class="label">业务电话：</label>
+            <div class="input">
+                {% raw form.business_phone %}
+                {% if form._error_dict.get('business_phone',None) %}
+                    <span>{{form._error_dict.get('business_phone')}}</span>
+                {% end %}
+            </div>
+        </div>
+
+        <div class="merchant-group clearfix">
+            <label class="label">业务手机：</label>
+            <div class="input">
+                {% raw form.business_mobile %}
+                {% if form._error_dict.get('business_mobile',None) %}
+                    <span>{{form._error_dict.get('business_mobile')}}</span>
+                {% end %}
+            </div>
+        </div>
+
+        <div class="merchant-group clearfix">
+            <label class="label">业务QQ：</label>
+            <div class="input">
+                {% raw form.qq %}
+                {% if form._error_dict.get('qq',None) %}
+                    <span>{{form._error_dict.get('qq')}}</span>
+                {% end %}
+            </div>
+        </div>
+
+        <div class="merchant-group clearfix">
+            <label class="label">负责人电话：</label>
+            <div class="input">
+                {% raw form.backend_phone %}
+                {% if form._error_dict.get('backend_phone',None) %}
+                    <span>{{form._error_dict.get('backend_phone')}}</span>
+                {% end %}
+            </div>
+        </div>
+
+        <div class="merchant-group clearfix">
+            <label class="label">负责人手机：</label>
+            <div class="input">
+                {% raw form.backend_mobile %}
+                {% if form._error_dict.get('backend_mobile',None) %}
+                    <span>{{form._error_dict.get('backend_mobile')}}</span>
+                {% end %}
+            </div>
+        </div>
+
+        <div class="merchant-group clearfix">
+            <label class="label">登陆用户：</label>
+            <div class="input">
+                {% raw form.user_id %}
+            </div>
+        </div>
+
+        <div class="merchant-group clearfix">
+            <label class="label">省份：</label>
+            <div class="input">
+                {% raw form.province_id %}
+            </div>
+        </div>
+
+        <div class="merchant-group clearfix">
+            <label class="label">市：</label>
+            <div class="input">
+                {% raw form.city_id %}
+            </div>
+        </div>
+
+        <div class="merchant-group clearfix">
+            <label class="label">县：</label>
+            <div class="input">
+                {% raw form.county_id %}
+                {% if form._error_dict.get('county_id',None) %}
+                    <span>{{form._error_dict.get('county_id')}}</span>
+                {% end %}
+            </div>
+        </div>
+
+        <div class="merchant-group clearfix" style="width: 100%;">
+            <label class="label">地址：</label>
+            <div class="input">
+                {% raw form.address %}
+                {% if form._error_dict.get('address',None) %}
+                    <span class="address-error">{{form._error_dict.get('address')}}</span>
+                {% end %}
+            </div>
+        </div>
+
+         <div class="merchant-group clearfix" style="width: 100%;">
+            <label class="label">&nbsp;</label>
+            <div class="input">
+                <input type="submit" value="提交" />
+
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(function(){
+        InitMenu();
+        InitProvince();
+        BindChangeProvince();
+        BindChangeCity();
+    });
+
+    /*
+    初始化左侧菜单
+    */
+    function InitMenu(){
+        $('#aa').accordion('select',1);
+        $('#jd_menu_merchant').addClass('active');
+    }
+
+    function InitProvince(){
+        $.ajax({
+            url: '/province.html',
+            type:'GET',
+            data: {'type': 'all'},
+            dataType: 'json',
+            success: function (data) {
+                if(data.status){
+                    $.each(data.rows,function(k,v){
+                        var option = document.createElement('option');
+                        option.setAttribute('value', v.nid);
+                        option.innerText = v.caption;
+                        $('#province').append(option);
+                    })
+                }else{
+                    $.messager.alert('警告', '省份初始化失败', 'warning');
+                }
+            }
+        })
+    }
+
+    function BindChangeProvince(){
+        $('#province').change(function(){
+            var provinceId = $(this).val();
+            if (provinceId=='0'){
+                 $('#city option:gt(0)').remove();
+                $('#county option:gt(0)').remove();
+            }else{
+                // 根据省份ID获取所有市
+                // 清空所有并添加
+                $.ajax({
+                    url: '/City.html',
+                    type: 'GET',
+                    data: {'type':'province','province_id': provinceId},
+                    dataType:'json',
+                    success: function (data) {
+                        if(data.status){
+                            $('#city option:gt(0)').remove();
+                            $.each(data.rows,function(k,v) {
+                                var option = document.createElement('option');
+                                option.setAttribute('value', v.nid);
+                                option.innerText = v.caption;
+                                $('#city').append(option);
+                            });
+                        }else{
+                             $.messager.alert('获取市列表失败', data.message, 'warning');
+                        }
+
+                    }
+                })
+            }
+        })
+    }
+
+    function BindChangeCity(){
+        $('#city').change(function(){
+            var cityId = $(this).val();
+            if (cityId=='0'){
+                 $('#county option:gt(0)').remove();
+            }else{
+                $.ajax({
+                    url: '/County.html',
+                    type: 'GET',
+                    data: {'type':'city','city_id': cityId},
+                    dataType:'json',
+                    success: function (data) {
+                        if(data.status){
+                            $('#county option:gt(0)').remove();
+                            $.each(data.rows,function(k,v) {
+                                var option = document.createElement('option');
+                                option.setAttribute('value', v.nid);
+                                option.innerText = v.caption;
+                                $('#county').append(option);
+                            });
+                        }else{
+                             $.messager.alert('获取市列表失败', data.message, 'warning');
+                        }
+
+                    }
+                })
+            }
+        })
+    }
+
+</script>
+
+{% end %}

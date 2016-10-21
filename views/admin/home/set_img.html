@@ -1,0 +1,152 @@
+{% extends '../layout/_layout.html' %}
+
+{% block crumbs %}
+用户管理 / 商户管理
+{% end %}
+
+{% block content %}
+<style>
+    .error-message{
+			margin: 4px 0 0 0;
+			padding: 0;
+			color: red;
+		}
+    .add_img{
+        border-radius: 10px;
+        position: relative;
+        cursor: pointer;
+        margin-left: 12px;
+        margin-top: 7px;
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        border: dashed 2px grey;
+    }
+    .icon-plus{
+        cursor: pointer;
+        position: absolute;
+        left: 28px;
+        top: 28px;
+        font-size: 21px;
+        color: grey;
+    }
+    .add_img:hover{
+        border: dashed 2px #eb7350;
+    }
+    .add_img:hover .icon-plus{
+        color: #eb7350;
+    }
+    .addimg{
+        width: 82px;
+        height: 82px;
+        margin-left:13px;
+        margin-bottom:10px;
+        border-radius: 10px;
+    }
+</style>
+
+<div>
+    <div id="list" style="">
+    <div class="add_img">
+
+        <!--<input id="upload" multiple type="file" class="file" onchange="localShowImage();">-->
+        <form name="form" action="/file/" method="POST" enctype="multipart/form-data">
+            <input class="file" onchange="UploadImage(this)" name="fafafa" type="file" id="files"
+                   multiple/>
+        </form>
+
+        <!--<i class="icon-plus"></i>-->
+    </div>
+</div>
+
+
+</div>
+    <script>
+        /*
+         上传图片
+         */
+        function UploadImage(ths) {
+            document.getElementById('upload_img_iframe').onload = UploadBigImageComplete;  //收到消息后重新加载并运行这个函数
+            $(ths).parent()[0].target = 'upload_img_iframe';
+            $(ths).parent()[0].submit();
+        }
+
+        function db_remove(thi) {
+            $(thi).parent().remove();
+
+        }
+        /*
+         大图成功的回调函数
+         */
+        function UploadBigImageComplete() {
+            var origin = $("#upload_img_iframe").contents().find("body").text();
+            var obj = JSON.parse(origin);
+            // 创建img标签，将图片添加到指定位置
+            if (obj.status) {
+                $("#pic_id").val(obj.pic_id);
+                $("#wb_type").val(1); // 1图片
+            } else {
+                $.messager.alert('上传失败', obj.summary, 'error');
+            }
+
+        }
+
+
+         function handleFileSelect(evt) {
+                var files = evt.target.files;
+
+                // Loop through the FileList and render image files as thumbnails.
+                for (var i = 0, f; f = files[i]; i++) {
+
+                    // Only process image files.
+                    if (!f.type.match('image.*')) {
+                        continue;
+                    }
+
+                    var reader = new FileReader();
+
+                    // Closure to capture the file information.
+                    reader.onload = (function (theFile) {
+                        return function (e) {
+                            // Render thumbnail.
+                            var span = document.createElement('span');
+                            span.innerHTML =
+                                    [
+                                        '<img ondblclick="db_remove(this);" class="addimg" src="',
+                                        e.target.result,
+                                        '" title="', escape(theFile.name),
+                                        '"/>'
+                                    ].join('');
+
+                            document.getElementById('list').insertBefore(span, null);
+//                            $("#list").insertAfter(span)
+                        };
+                    })(f);
+
+                    // Read in the image file as a data URL.
+                    reader.readAsDataURL(f);
+                }
+            }
+
+
+         document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+
+
+
+
+        $(function () {
+            InitMenu();
+        });
+
+        /*
+        初始化左侧菜单
+        */
+        function InitMenu(){
+            $('#aa').accordion('select',0);
+            $('#jd_menu_merchant').addClass('active');
+        }
+
+	</script>
+
+{% end %}

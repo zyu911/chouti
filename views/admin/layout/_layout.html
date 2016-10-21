@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/statics/plugins/jquery-easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/statics/plugins/jquery-easyui/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/commons.css">
+
+    <script type="text/javascript" src="/statics/plugins/jquery-easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="/statics/plugins/jquery-easyui/jquery.easyui.min.js"></script>
+
+</head>
+<body class="easyui-layout">
+
+    <div data-options="region:'north'" style="height:50px">
+        奇谈怪论
+    </div>
+    <div data-options="region:'south',split:true" style="height:30px;"></div>
+    <div data-options="region:'west',split:true" title="后台管理" style="width:200px;">
+        <div id="aa" class="easyui-accordion" data-options="fit:true,border:false">
+            <div title="我的资料">
+                <a id="jd_menu_province" class="jd-menu" href="/set_img">设置头像</a>
+                <!--<a id="jd_menu_city" class="jd-menu" href="/CityManager.html">市</a>-->
+                <!--<a id="jd_menu_county" class="jd-menu" href="/CountyManager.html">县（区）</a>-->
+            </div>
+            <div title="我的发布">
+                <!--<a id="user" class="jd-menu" href="#">管理发布</a>-->
+                <a id="jd_menu_merchant" class="jd-menu" href="/edit_news">管理发布</a>
+            </div>
+            <div title="我的收藏">
+               <a class="jd-menu" href="/find_love">查看收藏</a>
+                <!--<a class="jd-menu" href="/edit_news">产品</a>-->
+            </div>
+        </div>
+    </div>
+    <div data-options="region:'center'" title="{% block crumbs %} {% end %}">
+        {% block content %} {% end %}
+    </div>
+
+</body>
+</html>
