@@ -2,8 +2,9 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>抽屉新热榜</title>
+    <title>奇谈怪论</title>
     <link rel="stylesheet" href="/statics/css/commons.css" />
+    <link rel="stylesheet" href="/statics/plugins/tab-menu-box/tab.css" />
     {% block css %}
 
     {% end %}
@@ -13,12 +14,25 @@
         <div class="w">
             <a class="logo" href="/"></a>
             <div class="act-menu">
-                <a href="/all/hot/recent/1" class="tb active">乱七八糟</a>
-                <!--<a href="/all/hot/recent/1" class="tb">42区</a>-->
-                <!--<a href="/all/hot/recent/1" class="tb">段子</a>-->
-                <a href="/all/hot/recent/1" class="tb">我爱美图</a>
-                <!--<a href="/all/hot/recent/1" class="tb">挨踢1024</a>-->
-                <a href="/all/hot/recent/1" class="tb">想说就说</a>
+                {% if cla==1%}
+                    <a href="/index/" class="tb active" onclick="lqbz(this);">乱七八糟</a>
+                {%else%}
+                    <a href="/index/" class="tb " onclick="lqbz(this);">乱七八糟</a>
+                {% end %}
+
+                {% if cla==2%}
+                     <a href="/texts/" class="tb active" onclick="wamt(this);">想说就说</a>
+                {%else%}
+                     <a href="/texts/" class="tb " onclick="wamt(this);">想说就说</a>
+                {% end %}
+
+                {% if cla==3%}
+                     <a href="/images/" class="tb active" onclick="ssjs(this);">我爱美图</a>
+                {%else%}
+                     <a href="/images/" class="tb " onclick="ssjs(this);">我爱美图</a>
+                {% end %}
+
+
             </div>
             <div class="key-sera">
 
@@ -32,7 +46,7 @@
 		    </div>
             {% if handler.session['is_login'] %}
                 <div id="action_nav" is-login="true" class="action-nav">
-                    <a href="/show/flow/1" style="float:left;position:relative;" id="btnDtaiShw">动态
+                    <a href="" style="float:left;position:relative;" id="btnDtaiShw">动态
                         <b class="notice-num-title" id="Dtai-num-title" style="right: 3px; display: none;">
                             <em id="Dtai-em"></em>
                         </b>
@@ -43,16 +57,16 @@
                             <i>+</i>
                         </b>
                     </a>
-                    <a href="/user/link/saved/1" id="loginUserNc" class="userPro-Box">
-                        <img src="statics/images/2.jpg" id="userProImg">
+                    <a href="javascript:void(0);" id="loginUserNc" class="userPro-Box">
+                        <img src="/statics/images/1.jpg" id="userProImg">
                         <span class="u-nick" id="userProNick">{{handler.session['user_info']['username']}}</span>
                         <em id="userProArr"></em>
                     </a>
                 </div>
                 <div class="user-opr-box" id="userOprBox" style="left: 869px; display: none; z-index: 11;">
-                    <a href="/user/link/saved/1" style="border-top:0;">我的新热榜</a>
+                    <a href="" style="border-top:0;">我的新热榜</a>
                     <a href="/profile">设置</a>
-                    <a class="logout" href="javascript:;">退出</a>
+                    <a class="logout" href="javascript:void(0);" onclick="logout();">退出</a>
                     <a href="http://www.chouti.com/cdu_45792645155" target="_blank" class="ie6-a">我的收藏</a>
                 </div>
             {% else %}
@@ -107,6 +121,23 @@
                 $('#loginUserNc').removeClass('active');
             })
         })
+
+        /* 收藏*/
+        function fevic(thi) {
+            if($(thi).children().first().hasClass('add'))
+            {$(thi).children().first().removeClass('add')}
+            else{
+                $(thi).children().first().addClass("add");
+            }
+
+        }
+        function logout() {
+            $.ajax({
+                url: '/logout'
+            });
+            window.onload()
+        }
+
     </script>
 </body>
 </html>

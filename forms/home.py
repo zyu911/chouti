@@ -13,6 +13,7 @@ class IndexForm(BaseForm):
         self.title = StringField()
         self.content = StringField(required=False)
         self.url = StringField(required=False)
+        self.image = StringField(required=False)
         self.news_type_id = IntegerField()
 
         super(IndexForm, self).__init__()

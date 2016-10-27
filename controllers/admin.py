@@ -2,12 +2,12 @@
 # -*- coding:utf-8 -*-
 from backend.core.request_handler import BaseRequestHandler
 from backend.utils.pager import Pagination
-from models import chouti_orm as ORM
 from sqlalchemy import and_, or_
 import json
 import time
 from models.admin import AdminService
-from repository.AdminRepository import AdminRepostiory
+from repository.admin import AdminRepostiory
+from models.home import HomeServer
 
 
 class AdminHandler(BaseRequestHandler):
@@ -37,10 +37,9 @@ class EditNews(BaseRequestHandler):
 
     def post(self):
         ret = {'status': True, 'message': '', 'total': 0, 'rows': []}
-        current_time = time.time()
-
-        conn = ORM.session()
-        all_count = conn.query(ORM.News).count()
+        # conn = ORM.session()
+        # all_count = conn.query(ORM.News).count()
+        all_count = HomeServer().count_news('all')
         ret['total'] = all_count
         page = self.get_argument("page")
         rows = self.get_argument("rows")

@@ -8,8 +8,8 @@ from backend.core.request_handler import BaseRequestHandler
 from forms import account
 from backend.utils.response import BaseResponse
 from backend import commons
-from models import chouti_orm as ORM
-from sqlalchemy import and_, or_
+from models.account import AccountServer
+from repository import chouti_orm as ORM
 
 
 class CheckCodeHandler(BaseRequestHandler):
@@ -31,15 +31,8 @@ class LoginHandler(BaseRequestHandler):
                 rep.message = {'code': '验证码错误'}
                 self.write(json.dumps(rep.__dict__))
                 return
-            conn = ORM.session()
-            obj = conn.query(ORM.UserInfo).filter(
-                or_(
-                    and_(ORM.UserInfo.email == form._value_dict['user'],
-                         ORM.UserInfo.password == form._value_dict['pwd']),
-                    and_(ORM.UserInfo.username == form._value_dict['user'],
-                         ORM.UserInfo.password == form._value_dict['pwd'])
-                )).first()
-            conn.close()
+
+            obj = AccountServer().loginHandel(form._value_dict['user'], form._value_dict['user'], form._value_dict['pwd'])
             if not obj:
                 rep.message = {'user': '用户名邮箱或密码错误'}
                 self.write(json.dumps(rep.__dict__))
@@ -47,7 +40,8 @@ class LoginHandler(BaseRequestHandler):
             user_info_dict = {
                 'nid': obj.nid,
                 'username': obj.username,
-                'email': obj.email
+                'email': obj.email,
+                'img': obj.img
             }
             self.session['is_login'] = True
             self.session['user_info'] = user_info_dict
@@ -116,6 +110,7 @@ class SendMsgHandler(BaseRequestHandler):
             conn = ORM.session()
 
             has_exists_email = conn.query(ORM.UserInfo).filter(ORM.UserInfo.email == form._value_dict['email']).count()
+            print(has_exists_email, "@@@@", form._value_dict['email'])
             if has_exists_email:
                 rep.summary = "此邮箱已经被注册"
                 self.write(json.dumps(rep.__dict__))

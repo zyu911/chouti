@@ -75,7 +75,7 @@ textarea {
 .pg-header .logo{
     width: 121px;
     height: 23px;
-    background: url("/statics/images/logo.png") no-repeat 0 0;
+    background: url("/statics/images/logo1.png") no-repeat 0 0;
     float: left;
     margin-top: 11px;
 }
@@ -393,6 +393,7 @@ textarea {
     font-size: 14px;
     color: #369;
     font-weight: bold;
+
 }
 .content-list .item .content-source {
     color: #b4b4b4;
@@ -479,7 +480,7 @@ textarea {
 }
 
 .content-list .item .news-content .part2 .icon-discus {
-    background-position: 0 -100px;
+    background-position: 0 -60px;
     width: 18px;
     height: 18px;
     vertical-align: -1px;
@@ -781,7 +782,7 @@ textarea.txt-huifu-top:focus{
     margin-top: -1px;
 }
 .comment-list-top-2 img {
-    width: 15px;
+    width: 15px !important;
     height: 15px;
 }
 
@@ -1235,3 +1236,5 @@ textarea.txt-huifu-top:focus{
 .easyui-accordion .jd-menu.active{
     background-color: #E0ECFF;
 }
+
+.add{background-position: 0 -140px !important;}

@@ -21,6 +21,7 @@ class StatusCodeEnum:
 class BaseResponse:
 
     def __init__(self):
+        # ret = {'status': False, 'data': '', 'error': '', 'summary': '', "pic_id": ''}
         self.status = False
         self.code = StatusCodeEnum.Success
         self.data = None

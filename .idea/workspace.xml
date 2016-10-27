@@ -1,7 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="174187c2-4fc9-40ec-b63e-053462185e44" name="Default" comment="" />
+    <list default="true" id="174187c2-4fc9-40ec-b63e-053462185e44" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/statics/images/77.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/statics/images/78.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/statics/images/79.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/statics/images/logo1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/statics/upload/zyu911/34/dd98ae90932b4280273894b8ddafc02b.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/di/Meta.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mapper.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/account.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/home.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/repository/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/repository/account.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/repository/connection.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/repository/home.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/home/chat.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/home/images.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/chouti_orm.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/repository/DbConnection.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/images/logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/020675ee7a175c925ecefe5cf93503bf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/093c0ca98ee3ce85369ad9bcdd3fb215" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/2ce81523ab9cea6d26919f74693b5615" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/2f77daefc1fde29699506efd26eafeb7" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/375def82e0974ee957b57b7aef7949a0" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/4f2e7060432ae37e02ef9b4da914110c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/5c756b48c7d9565596caa1deda73afe5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/6414905d7bd8aea358c80e7556196949" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/7823f09d90f9fb75623c5d95020ed126" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/87cb976c3e838d4fc849a7829cc76e22" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/87ffb5d2c4ec21e491a6516a3fe77286" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/91635055df88d1a8e7e9110debdc7235" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/9c3f7a14048594d69a9d7f97391ed1c8" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/ade178cc84ad6a0da8eb6549f4493641" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/b9e9d50dce37c155b2d66fc9c22f48dd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/bc7f45b412428ec458c57502833e8675" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/cfceaaa2a9c31c60fa2c53af79ec9f7f" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/da933c0c35e91d2666cc75163f468104" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/ed4c9fd322f98789690150073223425c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/fd57e969c5cd652044093667e9a99571" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/fe1f83d3897b1ee28c1dc1ac06f324db" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/statics/upload/下载.jpeg" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/repository/AdminRepository.py" afterPath="$PROJECT_DIR$/repository/admin.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/statics/upload/08634dc8f64f27ffa25e3c4ad0ffe790" afterPath="$PROJECT_DIR$/forms/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/statics/upload/120d14666730d9e2559c963a406529b0" afterPath="$PROJECT_DIR$/controllers/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/statics/upload/2bdd0e47190ef38c048594212473cfd1" afterPath="$PROJECT_DIR$/backend/utils/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/statics/upload/31d55718b37892ec19be7d4c801bf30d" afterPath="$PROJECT_DIR$/backend/session/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/statics/upload/3b4b1c94b3eb20bfae87d598a9ca6d1a" afterPath="$PROJECT_DIR$/backend/form/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/statics/upload/4106b5f14dbb1e32fbe2fc84a9a38eb6" afterPath="$PROJECT_DIR$/backend/core/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/statics/upload/ae64bedf6cd6f989dd21f283f728ac16" afterPath="$PROJECT_DIR$/backend/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.py" afterPath="$PROJECT_DIR$/app.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/session/session.py" afterPath="$PROJECT_DIR$/backend/session/session.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/utils/message.py" afterPath="$PROJECT_DIR$/backend/utils/message.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/utils/response.py" afterPath="$PROJECT_DIR$/backend/utils/response.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.py" afterPath="$PROJECT_DIR$/config.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/account.py" afterPath="$PROJECT_DIR$/controllers/account.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/admin.py" afterPath="$PROJECT_DIR$/controllers/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/home.py" afterPath="$PROJECT_DIR$/controllers/home.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forms/home.py" afterPath="$PROJECT_DIR$/forms/home.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/admin.py" afterPath="$PROJECT_DIR$/models/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/repository/chouti_orm.py" afterPath="$PROJECT_DIR$/repository/chouti_orm.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/statics/css/commons.css" afterPath="$PROJECT_DIR$/statics/css/commons.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin/home/set_img.html" afterPath="$PROJECT_DIR$/views/admin/home/set_img.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/home/index.html" afterPath="$PROJECT_DIR$/views/home/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/master/_layout.html" afterPath="$PROJECT_DIR$/views/master/_layout.html" />
+    </list>
     <ignored path="chouti.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -20,55 +87,13 @@
     <favorites_list name="chouti" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Meta.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backend/di/Meta.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="89">
+              <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chouti_orm.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/chouti_orm.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/models/admin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DbConnection.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/repository/DbConnection.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdminRepository.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/repository/AdminRepository.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="14" column="9" selection-start-line="11" selection-start-column="0" selection-end-line="37" selection-end-column="23" />
-              <folding>
-                <marker date="1476602848000" expanded="true" signature="366:384" ph="select * fro... news" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -92,8 +117,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="height" value="828" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -120,8 +146,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -150,7 +176,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="forms" />
+              <option name="myItemId" value="backend" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -161,7 +187,6 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -252,6 +277,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -386,25 +417,25 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="23" width="1440" height="828" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2532189" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -428,7 +459,15 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/zyu.txt">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/chouti_orm.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -436,7 +475,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zzz.txt">
+    <entry file="file://$PROJECT_DIR$/models/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -444,7 +483,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UIAdmin/Forms/Merchant.py">
+    <entry file="file://$PROJECT_DIR$/repository/DbConnection.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -452,6 +491,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/repository/AdminRepository.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="9" selection-start-line="11" selection-start-column="0" selection-end-line="37" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyu.txt" />
+    <entry file="file://$PROJECT_DIR$/zzz.txt" />
+    <entry file="file://$PROJECT_DIR$/UIAdmin/Forms/Merchant.py" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -470,11 +520,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/repository/AdminRepository.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
+        <state relative-caret-position="252">
           <caret line="14" column="9" selection-start-line="11" selection-start-column="0" selection-end-line="37" selection-end-column="23" />
-          <folding>
-            <marker date="1476602848000" expanded="true" signature="366:384" ph="select * fro... news" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -490,6 +538,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/di/Meta.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
           <folding />
         </state>
       </provider>

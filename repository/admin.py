@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-from repository import DbConnection
+from repository import connection
 from models.admin import IAdminRepository
 from repository import chouti_orm as ORM
 
 
 class AdminRepostiory(IAdminRepository):
     def __init__(self):
-        self.db_conn = DbConnection.DbConnection()
+        self.db_conn = connection.DbConnection()
 
     def fetch_news(self):
         cursor = self.db_conn.connect()

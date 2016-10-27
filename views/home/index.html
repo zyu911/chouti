@@ -1,7 +1,7 @@
 {% extends "../master/_layout.html" %}
 
 {% block css %}
-    <link rel="stylesheet" href="/statics/plugins/tab-menu-box/tab.css" />
+
     <!--<link rel="stylesheet" href="/statics/css/right.css" />-->
     <style>
          .userpic {
@@ -125,12 +125,62 @@
             top: 4px;
             width: 28px;
             height: 28px;}
+
+            .error-message{
+			margin: 4px 0 0 0;
+			padding: 0;
+			color: red;
+		}
+    .add_img{
+        border-radius: 10px;
+        position: relative;
+        cursor: pointer;
+        margin-left: 12px;
+        margin-top: 7px;
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        border: dashed 2px grey;
+    }
+    .icon-plus{
+        cursor: pointer;
+        position: absolute;
+        left: 28px;
+        top: 28px;
+        font-size: 21px;
+        color: grey;
+    }
+    .add_img:hover{
+        border: dashed 2px #eb7350;
+    }
+    .add_img:hover .icon-plus{
+        color: #eb7350;
+    }
+    .addimg{
+        width: 82px;
+        height: 82px;
+        margin-left:13px;
+        margin-bottom:10px;
+        border-radius: 10px;
+    }
+
+    .add{background-position: 0 -140px !important;}
+    .content-list .item .news-content .part1 .show-content {
+    font-size: 14px;
+    color: #369;
+    font-weight: bold;
+    width:480px;
+    display: inline-block;
+    overflow: hidden;
+    word-break: keep-all;
+    text-overflow: ellipsis;
+
+}
+
     </style>
 {% end %}
 
 {% block body %}
-    <!--<h1>{{current_time}}</h1>-->
-
     <div style="background-color: #eee;">
         <div class="w body-content">
             <div class="clearfix">
@@ -159,21 +209,35 @@
                             <div class="item">
 
                                 <div class="news-pic">
-                                    <img src="statics/images/1.jpg" alt="抽屉新热榜" style="display: inline;">
+                                    {% if item[10] %}
+                                    <img src="{{item[10]}}" alt="奇谈怪论" style="display: inline;">
+                                    {% else%}
+                                    <img src="/statics/images/1.jpg" alt="奇谈怪论" style="display: inline;">
+                                    {% end %}
                                 </div>
 
                                 <div class="null-item"></div>
 
                                 <div class="news-content">
                                     <div class="part1">
-                                        <a href="{{item[2]}}" class="show-content" target="_blank">{{item[1]}}</a>
-                                        <span class="content-source">-wallstreetcn.com</span>
-                                        <a href="/r/news/hot/1" class="n2">
+                                        {% if item[9] == 3 %}
+                                        <a href="/image/{{item[0]}}" class="show-content" target="_blank">{{item[1]}}</a>
+                                        {% elif item[9] == 2 %}
+                                        <a href="/text/{{item[0]}}" class="show-content" target="_blank">{{item[1]}}</a>
+                                        {% else %}
+                                            <a href="{{item[2]}}" class="show-content" target="_blank">{{item[1]}}</a>
+                                        {% end %}
+                                        <span class="content-source"></span>
+                                        <a href="#" class="n2">
                                             <span class="content-kind">{{item[6]}}</span>
                                         </a>
                                     </div>
                                     <div class="area-summary">
+                                        {%if item[3]%}
                                         <span class="summary">{{item[3]}}</span>
+                                        {%else%}
+                                        <span class="summary"></span>
+                                        {%end%}
                                     </div>
                                     <div class="part2">
                                         <a href="javascript:void(0);" class="digg-a" title="推荐" onclick="DoFavor(this,{{item[0]}});">
@@ -188,11 +252,12 @@
                                             <span class="hand-icon icon-discus"></span>
                                             <b id="comment_count_{{item[0]}}">{{item[8]}}</b>
                                         </a>
-                                        <a href="javascript:void(0);" class="collect-a" >
-                                            <span class="hand-icon icon-collect"></span><b>私藏</b>
+                                        <a href="javascript:void(0);" class="collect-a " onclick="fevic(this);">
+                                            <span class="hand-icon icon-collect"></span>
+                                            <b>私藏</b>
                                         </a>
                                         <a href="#" class="user-a">
-                                            <span><img src=""></span>
+                                            <span><img src="/statics/images/1.jpg"></span>
                                             <b>{{item[5]}}</b>
                                         </a>
                                         <span class="time-into">
@@ -382,20 +447,18 @@
                         <div class="tab-alt">标题</div>
                         <div class="f2">
 
-                            <input type="text" name="title" />
+                            <input type="text" name="title" id="title_zyu"/>
                         </div>
                         <div class="tab-alt">添加摘要（选填）</div>
                         <div class="f2">
-                            <textarea name="content"></textarea>
+                            <textarea name="content" id="content_zyu"></textarea>
                         </div>
                         <div class="f3">
                             <span>发布到：</span>
                             <div class="news-type" style="display: inline-block">
-                                <a value="1" class="active">42区</a>
-                                <a value="2" >段子</a>
-                                <a value="3" >图片</a>
-                                <a value="4" >挨踢1024</a>
-                                <a value="5" >你问我答</a>
+                                <a value="1" class="active">乱七八糟</a>
+                                <a value="2" >想说就说</a>
+                                <a value="3" >我爱美图</a>
                             </div>
                         </div>
                         <div class="f4">
@@ -411,8 +474,7 @@
 
                             <span>发布到：</span>
                             <div class="news-type" style="display: inline-block">
-                                <a value="2" class="active">段子</a>
-                                <a value="5">你问我答</a>
+                                <a value="2" class="active">想说就说</a>
                             </div>
                         </div>
                         <div class="f4">
@@ -423,16 +485,23 @@
                     <div content="3" class="publish-content clearfix hide">
                         <div class="tab-alt">添加图片</div>
                         <div class="f5">
-                            <form style="display: inline-block" id="upload_img_form" name="form" action="/upload_image" method="POST"  enctype="multipart/form-data" >
-                                <a id="fakeFile" class="fake-file">
-                                    <span>上传图片</span>
-                                    <input type="file" name="img" onchange="UploadImage(this);"/>
-                                    <input type="text" name="url" class="hide" />
-                                </a>
-                                <iframe id='upload_img_iframe' name='upload_img_iframe' src=""  class="hide"></iframe>
-                            </form>
-                            <a href="javascript:void(0);" class="re-upload hide" id="reUploadImage" onclick="ReUploadImage(this);">重新上传</a>
-                        </div>
+                            <div>
+
+                                    <div class="add_img">
+
+                                        <!--<input id="upload" multiple type="file" class="file" onchange="localShowImage();">-->
+                                        <form name="form"  action="/upload_image" method="POST" enctype="multipart/form-data">
+                                            <input class="file" onchange="UploadImage(this)" name="fafafa" type="file" id="files" multiple/>
+                                        </form>
+
+                                        <!--<i class="icon-plus"></i>-->
+
+                                </div>
+                                    <div id="list" style="">
+                                        </div>
+                            </div>
+
+
                         <div class="f2" style="margin-top: 8px">
                             <textarea name="title" placeholder="请输入描述"></textarea>
                         </div>
@@ -440,7 +509,6 @@
                             <span>发布到：</span>
                             <div class="news-type" style="display: inline-block">
                                 <a value="3" class="active">图片</a>
-                                <a value="5">你问我答</a>
                             </div>
                         </div>
                         <div class="f4">
@@ -453,6 +521,7 @@
 
         </div>
     </div>
+        </div>
 
     <div id="accountDialog" class="account-dialog hide clearfix">
         <div id="model_login" class="login left">
@@ -541,28 +610,99 @@
             </div>
         </div>
     </div>
+        <iframe id='upload_img_iframe' name='upload_img_iframe' src="" class="hide"></iframe>
 
 {% end %}
 
 {% block javascript %}
     <script type="text/javascript" src="/statics/plugins/tab-menu-box/tab.js"></script>
-    <script type="text/javascript">
+    <script>
         $(function () {
             BindTabMenu('#tab-menu-title', '#tab-menu-body');
-
             BindLoginRegisterDialog();
-
             BindPublishDialog();
-
             BindSendMsg();
-
             BindNewType();
-
             BindPublishSubmit();
         });
 
 
-        //        自动获取连接
+
+        /*上传多张图片*/
+
+        /*
+         上传图片
+         */
+        function UploadImage(ths) {
+            document.getElementById('upload_img_iframe').onload = UploadBigImageComplete;  //收到消息后重新加载并运行这个函数
+            $(ths).parent()[0].target = 'upload_img_iframe';
+            $(ths).parent()[0].submit();
+        }
+
+        function db_remove(thi) {
+            $(thi).parent().remove();
+
+        }
+        /*
+         大图成功的回调函数
+         */
+        function UploadBigImageComplete() {
+            var origin = $("#upload_img_iframe").contents().find("body").text();
+            var obj = JSON.parse(origin);
+            // 创建img标签，将图片添加到指定位置
+            if (obj.status) {
+                $("#pic_id").val(obj.pic_id);
+                $("#wb_type").val(1); // 1图片
+            } else {
+                $.messager.alert('上传失败', obj.summary, 'error');
+            }
+
+        }
+
+
+         function handleFileSelect(evt) {
+                var files = evt.target.files;
+
+                // Loop through the FileList and render image files as thumbnails.
+                for (var i = 0, f; f = files[i]; i++) {
+
+                    // Only process image files.
+                    if (!f.type.match('image.*')) {
+                        continue;
+                    }
+
+                    var reader = new FileReader();
+
+                    // Closure to capture the file information.
+                    reader.onload = (function (theFile) {
+                        return function (e) {
+                            // Render thumbnail.
+                            var span = document.createElement('span');
+                            span.innerHTML =
+                                    [
+                                        '<img ondblclick="db_remove(this);" class="addimg" src="',
+                                        e.target.result,
+                                        '" title="', escape(theFile.name),
+                                        '"/>'
+                                    ].join('');
+
+                            document.getElementById('list').insertBefore(span, null);
+//                            $("#list").insertAfter(span)
+                        };
+                    })(f);
+
+                    // Read in the image file as a data URL.
+                    reader.readAsDataURL(f);
+                }
+            }
+
+
+         document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+
+        var image = '';
+
+        //                自动获取连接
         function LoadPage(){
             $(".error-msg").empty();
             var targetUrl =  document.getElementById('url').value;
@@ -581,6 +721,8 @@
                     if (arg.status){
                          $('#title_zyu').val(arg.message.title);
                         $('#content_zyu').text(arg.message.content);
+                        image = arg.message.image;
+                        alert(image, '有图片哈哈')
                     }else{$(".error-msg").text(arg.message.error); }
 
                 }
@@ -614,9 +756,10 @@
                     post_dict[$(this).attr('name')] =$(this).val();
                 });
                 post_dict['news_type_id'] = container.find('.news-type .active').attr('value');
+                post_dict["image"] = image;
 
                 $.ajax({
-                    url: '/index',
+                    url: '/index/',
                     type: 'POST',
                     data: post_dict,
                     dataType: 'json',
@@ -624,10 +767,10 @@
                         if(arg.status){
                             window.location.href = '/index/';
                         }else{
-                            console.log(arg);
+                            $(".error-msg").text(arg.message.error);
                         }
                     }
-                    
+
                 })
 
 
@@ -713,43 +856,7 @@
             }
         };
 
-        /*
-        上传图片
-        */
-        function UploadImage(ths){
-            document.getElementById('upload_img_iframe').onload = UploadImageComplete;
-            document.getElementById('upload_img_form').target = 'upload_img_iframe';
-            document.getElementById('upload_img_form').submit();
-        }
 
-        /*
-        上传图片之后回掉函数
-        */
-        function UploadImageComplete(){
-            var origin = $("#upload_img_iframe").contents().find("body").text();
-            var obj = JSON.parse(origin);
-            if(obj.status){
-                var img = document.createElement('img');
-                img.src = obj.data;
-                img.style.width = "200px";
-                img.style.height = "180px";
-                $("#upload_img_form").append(img);
-                $('#fakeFile').addClass('hide');
-                $('#reUploadImage').removeClass('hide');
-                $('#fakeFile').find('input[type="text"]').val(obj.data);
-            }else{
-                alert(obj.summary);
-            }
-        }
-
-        /*
-        重新上传图片
-        */
-        function ReUploadImage(ths){
-            $(ths).addClass('hide');
-            $("#upload_img_form").find('img').remove();
-            $('#fakeFile').removeClass('hide');
-        }
 
         /*
         点击登陆按钮
@@ -773,7 +880,7 @@
                 dataType: 'json',
                 success: function(arg){
                     if(arg.status){
-                        window.location.href = '/index';
+                        window.location.href = '/index/';
                     }else{
                         $.each(arg.message, function(k,v){
                             //<span class="error">s</span>
@@ -812,7 +919,7 @@
                 dataType: 'json',
                 success: function(arg){
                     if(arg.status){
-                        window.location.href = '/index';
+                        window.location.href = '/index/';
                     }else{
                         $.each(arg.message, function(k,v){
                             //<span class="error">s</span>
@@ -1027,5 +1134,7 @@
             $reply.text(username);
             $reply.parent().css('display','block');
         }
+
+
     </script>
 {% end %}

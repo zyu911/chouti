@@ -55,10 +55,11 @@ class News(Base):
     user_info_id = Column(Integer, ForeignKey("userinfo.nid"))
     news_type_id = Column(Integer, ForeignKey("newstype.nid"))
     ctime = Column(TIMESTAMP)
-    title = Column(String(32))
+    title = Column(String(512))
     show = Column(Integer)
-    url = Column(String(128))
-    content = Column(String(150))
+    url = Column(String(512))
+    content = Column(String(512))
+    image = Column(String(256))
     favor_count = Column(Integer, default=0)
 
     comment_count = Column(Integer, default=0)
@@ -107,4 +108,4 @@ def session():
     return cls()
 
 # drop_db()
-init_db()
+# init_db()
